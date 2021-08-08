@@ -6,7 +6,13 @@ import {
     ADD_TODO_FAILURE,
     DELETE_TODO_STARTED,
     DELETE_TODO_SUCCESS,
-    DELETE_TODO_FAILURE, GET_TODO_SUCCESS, GET_TODO_STARTED, GET_TODO_FAILURE,
+    DELETE_TODO_FAILURE,
+    GET_TODO_SUCCESS,
+    GET_TODO_STARTED,
+    GET_TODO_FAILURE,
+    GET_VERSION_SUCCESS,
+    GET_VERSION_STARTED,
+    GET_VERSION_FAILURE,
 } from "../consts";
 
 const deleteTodoSuccess = todo => ({
@@ -48,6 +54,20 @@ const getTodoStarted = () => ({
 
 const getTodoFailure = error => ({
     type: GET_TODO_FAILURE,
+    payload: { error }
+});
+
+const getVersionSuccess = version => ({
+    type: GET_VERSION_SUCCESS,
+    payload: { ...version }
+});
+
+const getVersionStarted = () => ({
+    type: GET_VERSION_STARTED
+});
+
+const getVersionFailure = error => ({
+    type: GET_VERSION_FAILURE,
     payload: { error }
 });
 
@@ -99,6 +119,20 @@ export const getTodos = () => {
             })
             .catch(err => {
                 dispatch(getTodoFailure(err.message));
+            });
+    };
+}
+
+export const getVersion = () => {
+    return dispatch => {
+        dispatch(getVersionStarted());
+        axios
+            .get(`http://localhost:8080/ver`, {headers})
+            .then(res => {
+                dispatch(getVersionSuccess(res.data));
+            })
+            .catch(err => {
+                dispatch(getVersionFailure(err.message));
             });
     };
 }
