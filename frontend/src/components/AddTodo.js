@@ -25,8 +25,8 @@ function AddTodo(props) {
                             <Form.Control type="text" placeholder="Enter todo name" ref={name}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="text" placeholder="Enter what need todo" ref={content} />
+                            <Form.Label>Todo content</Form.Label>
+                            <Form.Control type="text" placeholder="Enter what need to todo" ref={content} />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit
