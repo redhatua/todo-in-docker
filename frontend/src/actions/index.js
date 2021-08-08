@@ -51,15 +51,19 @@ const getTodoFailure = error => ({
     payload: { error }
 });
 
+const headers = {
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+}
+
 export const addTodo = payload => {
     return dispatch => {
         dispatch(addTodoStarted());
-
         axios
             .post(`http://localhost:8080/save`, {
                 content: payload.content,
                 name: payload.name,
-            })
+            }, {headers})
             .then(res => {
                 dispatch(addTodoSuccess(res.data));
             })
@@ -73,9 +77,8 @@ export const deleteTodo = payload => {
 
     return dispatch => {
         dispatch(deleteTodoStarted());
-
         axios
-            .delete(`http://localhost:8080/del/${payload.id}`)
+            .delete(`http://localhost:8080/del/${payload.id}`, {headers})
             .then(res => {
                 dispatch(deleteTodoSuccess(res.data));
             })
@@ -89,9 +92,8 @@ export const getTodos = () => {
 
     return dispatch => {
         dispatch(getTodoStarted());
-
         axios
-            .get(`http://localhost:8080/get`)
+            .get(`http://localhost:8080/get`, {headers})
             .then(res => {
                 dispatch(getTodoSuccess(res.data));
             })
