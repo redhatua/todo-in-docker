@@ -56,7 +56,7 @@ export const addTodo = payload => {
         dispatch(addTodoStarted());
 
         axios
-            .post(`http://backend/save`, {
+            .post(`http://localhost:8080/save`, {
                 content: payload.content,
                 name: payload.name,
             })
@@ -75,7 +75,7 @@ export const deleteTodo = payload => {
         dispatch(deleteTodoStarted());
 
         axios
-            .delete(`http://backend/del/${payload.id}`)
+            .delete(`http://localhost:8080/del/${payload.id}`)
             .then(res => {
                 dispatch(deleteTodoSuccess(res.data));
             })
@@ -91,7 +91,7 @@ export const getTodos = () => {
         dispatch(getTodoStarted());
 
         axios
-            .get(`http://backend/get`)
+            .get(`http://localhost:8080/get`)
             .then(res => {
                 dispatch(getTodoSuccess(res.data));
             })
