@@ -41,7 +41,7 @@ function App(props) {
                           {isAddTodo && <AddTodo />}
                           <TodoList onClickTodo={onClickTodo} />
                       </Card.Body>
-                      <Card.Footer>PHP {props.todos.php} SYMPHONY {props.todos.symfony}</Card.Footer>
+                      <Card.Footer>Symfony v{props.todos.symfony} on PHP v{props.todos.php}</Card.Footer>
                   </Card>
               </Col>
           </Row>
