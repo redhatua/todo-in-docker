@@ -19,6 +19,7 @@ const initState = {
 };
 
 export default function rootReducer(state = initState, action) {
+    console.log(action);
     switch (action.type) {
         case ADD_TODO_STARTED:
             return {
@@ -64,7 +65,7 @@ export default function rootReducer(state = initState, action) {
         case GET_TODO_SUCCESS:
             return {
                 ...state,
-                todos: [...state.todos, ...action.payload],
+                todos: [...state.todos, ...action.payload.todos],
                 loading: false,
             }
         case GET_TODO_FAILURE:

@@ -15,9 +15,9 @@ import {
     GET_VERSION_FAILURE,
 } from "../consts";
 
-const deleteTodoSuccess = todo => ({
+const deleteTodoSuccess = id => ({
     type: DELETE_TODO_SUCCESS,
-    payload: { ...todo }
+    payload: { id }
 });
 
 const deleteTodoStarted = () => ({
@@ -85,7 +85,7 @@ export const addTodo = payload => {
                 name: payload.name,
             }, {headers})
             .then(res => {
-                dispatch(addTodoSuccess(res.data));
+                dispatch(addTodoSuccess({ id: res.data, ...payload }));
             })
             .catch(err => {
                 dispatch(addTodoFailure(err.message));
@@ -94,13 +94,12 @@ export const addTodo = payload => {
 };
 
 export const deleteTodo = payload => {
-
     return dispatch => {
         dispatch(deleteTodoStarted());
         axios
-            .delete(`http://localhost:8080/del/${payload.id}`, {headers})
+            .delete(`http://localhost:8080/del/${payload}`, {headers})
             .then(res => {
-                dispatch(deleteTodoSuccess(res.data));
+                dispatch(deleteTodoSuccess(payload));
             })
             .catch(err => {
                 dispatch(deleteTodoFailure(err.message));

@@ -25,8 +25,8 @@ function ToDoList(props) {
                                             <Col>{todo.name}</Col>
                                             <Col>{todo.content}</Col>
                                             <Col>
-                                                <Button variant="danger" size="sm" onClick={() => deleteTodo(todo.id)}>
-                                                    Danger
+                                                <Button variant="danger" size="sm" onClick={() => props.deleteTodo(todo.id)}>
+                                                    Delete
                                                 </Button>
                                             </Col>
                                         </Row>
