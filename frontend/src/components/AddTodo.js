@@ -21,7 +21,7 @@ function AddTodo(props) {
                         });
                     }}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Todo number</Form.Label>
+                            <Form.Label>Todo name</Form.Label>
                             <Form.Control type="text" placeholder="Enter todo name" ref={name}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
