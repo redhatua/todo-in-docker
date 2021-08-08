@@ -50,6 +50,8 @@ class TodoController extends AbstractController {
         $todo = new Todo();
         $todo->setName($data['name']);
         $todo->setContent($data['content']);
+        $this->em->persist($todo);
+        $this->em->flush();
         return new Response('Saved');
     }
 
