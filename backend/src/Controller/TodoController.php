@@ -41,7 +41,7 @@ class TodoController extends AbstractController {
     }
 
     /**
-     * @Route("/save", name="save_todo", methods={"POST"})
+     * @Route("/save", name="save_todo", methods={"POST", "OPTIONS"})
      */
     public function saveAction(
         Request $request
