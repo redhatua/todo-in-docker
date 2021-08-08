@@ -22,7 +22,8 @@ function ToDoList(props) {
                                 <ListGroup.Item key={index} onClick={() => props.onClickTodo(todo)}>
                                     <Container>
                                         <Row>
-                                            <Col>{todo.title}</Col>
+                                            <Col>{todo.name}</Col>
+                                            <Col>{todo.content}</Col>
                                             <Col>
                                                 <Button variant="danger" size="sm" onClick={() => deleteTodo(todo.id)}>
                                                     Danger

@@ -57,9 +57,8 @@ export const addTodo = payload => {
 
         axios
             .post(`http://backend/save`, {
-                title: payload.title,
-                id: payload.id,
-                completed: false
+                content: payload.content,
+                name: payload.name,
             })
             .then(res => {
                 dispatch(addTodoSuccess(res.data));
