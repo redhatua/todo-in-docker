@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 import {getVersion} from "./actions";
 
 function App(props) {
-    console.log(props);
   const [isEditTodo, setIsEditTodo] = useState(false);
   const [isAddTodo, setIsAddTodo] = useState(false);
 
@@ -42,7 +41,7 @@ function App(props) {
                           {isAddTodo && <AddTodo />}
                           <TodoList onClickTodo={onClickTodo} />
                       </Card.Body>
-                      <Card.Footer>PHP {props.todos.php} SYMPHONY {props.todos.symphony}</Card.Footer>
+                      <Card.Footer>PHP {props.todos.php} SYMPHONY {props.todos.symfony}</Card.Footer>
                   </Card>
               </Col>
           </Row>

@@ -14,7 +14,7 @@ const initState = {
     loading: false,
     todos: [],
     php: '',
-    symphony: '',
+    symfony: '',
     error: null
 };
 
@@ -82,7 +82,7 @@ export default function rootReducer(state = initState, action) {
             return {
                 ...state,
                 php: action.payload.php,
-                symphony: action.payload.symphony,
+                symfony: action.payload.symfony,
                 loading: false,
             }
         case GET_VERSION_FAILURE:
