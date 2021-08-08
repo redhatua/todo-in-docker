@@ -7,12 +7,14 @@ import {
     DELETE_TODO_SUCCESS,
     GET_TODO_FAILURE,
     GET_TODO_STARTED,
-    GET_TODO_SUCCESS
+    GET_TODO_SUCCESS, GET_VERSION_FAILURE, GET_VERSION_STARTED, GET_VERSION_SUCCESS
 } from "../consts";
 
 const initState = {
     loading: false,
     todos: [],
+    php: '',
+    symphony: '',
     error: null
 };
 
@@ -71,6 +73,23 @@ export default function rootReducer(state = initState, action) {
                 loading: false,
                 error: action.payload.error
             };
+        case GET_VERSION_STARTED:
+            return {
+                ...state,
+                loading: true,
+            }
+        case GET_VERSION_SUCCESS:
+            return {
+                ...state,
+                php: action.payload.php,
+                symphony: action.payload.symphony,
+                loading: false,
+            }
+        case GET_VERSION_FAILURE:
+            return {
+                ...state,
+                loading: false,
+            }
         default:
             return state;
     }

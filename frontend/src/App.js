@@ -1,12 +1,20 @@
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import './App.css';
+import {connect} from "react-redux";
+import {getVersion} from "./actions";
 
-export default function App() {
+function App(props) {
+    console.log(props);
   const [isEditTodo, setIsEditTodo] = useState(false);
   const [isAddTodo, setIsAddTodo] = useState(false);
+
+    useEffect(
+        () => props.getVersion(),
+        // eslint-disable-next-line
+        []);
 
   const onClickTodo = () => {
     setIsEditTodo(!isEditTodo);
@@ -34,10 +42,15 @@ export default function App() {
                           {isAddTodo && <AddTodo />}
                           <TodoList onClickTodo={onClickTodo} />
                       </Card.Body>
-                      <Card.Footer>Some info in footer</Card.Footer>
+                      <Card.Footer>PHP {props.todos.php} SYMPHONY {props.todos.symphony}</Card.Footer>
                   </Card>
               </Col>
           </Row>
       </Container>
   );
 }
+const mapStateToProps = (state) => {
+    return { ...state };
+}
+export default connect(mapStateToProps, { getVersion })(App);
+
